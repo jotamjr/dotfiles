@@ -1,0 +1,32 @@
+urxvt.termName: rxvt-unicode
+urxvt.scrollBar: false
+urxvt.saveLines: 4096
+urxvt.depth: 32
+urxvt.font: xft:inconsolata:size=12,xft:Droid Sans Mono for Powerline:size=12
+urxvt.transparent: false
+urxvt.foreground: #AABDCB
+urxvt.background: [90]#202C3A
+
+urxvt.color0  : #2E3436
+urxvt.color8  : #555753
+! red
+urxvt.color1  : #922B21
+urxvt.color9  : #EC7063
+! green
+urxvt.color2  : #1E8449
+urxvt.color10 : #58D68D
+! yellow
+urxvt.color3  : #B7950B
+urxvt.color11 : #F4D03F
+! blue
+urxvt.color4  : #1F618D
+urxvt.color12 : #5DADE2
+! magenta
+urxvt.color5  : #76448A
+urxvt.color13 : #A569BD
+! cyan
+urxvt.color6  : #148F77
+urxvt.color14 : #48C6B0
+! white
+urxvt.color7  : #D3D7CF
+urxvt.color15 : #EEEEEC
