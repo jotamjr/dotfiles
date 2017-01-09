@@ -1,0 +1,58 @@
+[general]
+#metadata = ~/.offlineimap
+accounts = work, fos
+
+ui = basic
+#ui = quiet
+
+pythonfile = ~/bin/get_creds_wrapper.py
+
+socktimeout = 60
+
+#fsync = true
+
+[mbnames]
+enabled = yes
+filename = ~/.mutt/mailboxes
+header = "mailboxes "
+peritem = "+%(accountname)s/%(foldername)s"
+sep = " "
+footer = "\n"
+
+[Account work]
+postsynchook = notmuch new
+localrepository = worklocal
+remoterepository = workserver
+
+[Repository worklocal]
+type = Maildir
+localfolders = ~/hypercube/personal/mail/work
+
+[Repository workserver]
+type = IMAP
+remotehosteval = get_creds('email/work/server')
+remoteusereval = get_creds('email/work/user')
+remotepasseval = get_creds('email/work/pass')
+ssl = yes
+starttls = yes
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+
+[Account fos]
+postsynchook = notmuch new
+localrepository = foslocal
+remoterepository = fosserver
+
+[Repository foslocal]
+type = Maildir
+localfolders = ~/hypercube/personal/mail/fos
+
+[Repository fosserver]
+type = IMAP
+remotehosteval = get_creds('email/fos/server')
+remoteusereval = get_creds('email/fos/user')
+remotepasseval = get_creds('email/fos/pass')
+ssl = yes
+starttls = yes
+cert_fingerprint = sha1_fingerprint
+tls_level = tls_secure
+ssl_version = tls1_2
