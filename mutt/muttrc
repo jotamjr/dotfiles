@@ -51,3 +51,8 @@ bind index,pager \Cn sidebar-next
 
 auto_view text/html
 alternative_order text/plain text/enriched text/html
+
+#
+# smime cert conf
+#
+source ~/.mutt/smime
