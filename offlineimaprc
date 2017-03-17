@@ -5,7 +5,7 @@ accounts = work, fos
 ui = basic
 #ui = quiet
 
-pythonfile = ~/bin/get_creds_wrapper.py
+pythonfile = ~/bin/get_creds.py
 
 socktimeout = 60
 
