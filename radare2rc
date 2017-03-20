@@ -1,5 +1,7 @@
 e dbg.bep=main
 e scr.color=true
 e asm.cmtright=true
-e asm.pseudo = true
+#e asm.pseudo = true
+e cmd.stack = true
 eco solarized
+e scr.utf8 = true
