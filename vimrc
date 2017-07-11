@@ -11,6 +11,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'itchyny/lightline.vim'
 Plugin 'edkolev/promptline.vim'
+Plugin 'altercation/vim-colors-solarized'
 
 call vundle#end()
 if has("autocmd")
@@ -39,8 +40,9 @@ set list
 set listchars=tab:>.,trail:.,nbsp:¬
 
 " interface
-syntax on
+syntax enable
 set background=dark
+colorscheme solarized
 set number
 set cursorline
 set laststatus=2
@@ -56,7 +58,7 @@ set hlsearch
 
 " lightline theme config
 let g:lightline = {
-  \ 'colorscheme': 'wombat',
+  \ 'colorscheme': 'solarized',
   \ 'component' : {
   \   'readonly' : '%{&readonly?"":""}',
   \   'branch' : '%{&branch?"":""}',
@@ -67,5 +69,9 @@ let g:lightline = {
   \}
 
 " use lightline theme for promptline
-let g:promptline_preset = 'full'
 let g:promptline_theme = 'lightline'
+let g:promptline_preset = {
+  \'a' : [ promptline#slices#host() ],
+  \'b' : [ promptline#slices#cwd() ],
+  \'c' : [ promptline#slices#vcs_branch(), promptline#slices#git_status() ],
+  \'warn' : [ promptline#slices#last_exit_code () ]}
