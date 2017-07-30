@@ -14,6 +14,7 @@
             "~/.dotfiles": "",
             "~/.config/awesome": "awesome",
             "~/.conky": "conky",
+            "~/.gdbinit": "gdbinit",
             "~/.radare2rc": "radare2rc",
             "~/.vim/vimrc": "vimrc",
             "~/.xinitrc": "xinitrc",
