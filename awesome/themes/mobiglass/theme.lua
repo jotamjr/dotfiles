@@ -2,14 +2,13 @@ local theme = {}
 
 theme.wallpaper   = os.getenv("HOME") .. "/.config/wallpapers/current.png"
 
-theme.font = "terminus 9"
+theme.font = "terminus 13"
 
 -- {{{ Colors
 theme.bg_normal  = "#202C3A"
 theme.bg_focus   = "#202C3A"
 theme.bg_urgent  = "#202C3A"
 theme.bg_systray = theme.bg_normal
---theme.fg_normal  = "#aaaaaa"
 theme.fg_normal  = "#aabdcb"
 theme.fg_focus   = "#5dade2"
 theme.fg_urgent  = "af1d18"

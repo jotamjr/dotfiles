@@ -66,6 +66,17 @@ modkey = "Mod4"
 altkey = "Mod1"
 
 -- lain layout
+
+lain.layout.cascade.offset_x = 64
+lain.layout.cascade.offset_y = 16
+lain.layout.cascade.nmaster = 5
+
+lain.layout.cascade.tile.offset_x      = 2
+lain.layout.cascade.tile.offset_y      = 32
+lain.layout.cascade.tile.extra_padding = 5
+lain.layout.cascade.tile.nmaster       = 5
+lain.layout.cascade.tile.ncol          = 2
+
 lain.layout.termfair.nmaster = 2
 lain.layout.termfair.ncol = 1
 
@@ -103,16 +114,22 @@ local separators = lain.util.separators
 
 markup = lain.util.markup
 
--- {{{ ALSA volume
-volume = lain.widgets.alsa({
+local batstat = lain.widget.bat{
   settings = function()
-    if volume_now.status == "off" then
-      volume_now.level = volume_now.level .. "M"
-    end
-    widget:set_markup(markup("#7493d2", volume_now.level .. "% "))
-    --widget:set_text(volume_now.level .. "% ")
+    widget:set_markup("PL " .. bat_now.perc .. "%")
   end
-})
+}
+
+-- {{{ ALSA volume
+--volume = lain.widgets.alsa({
+--  settings = function()
+--    if volume_now.status == "off" then
+--      volume_now.level = volume_now.level .. "M"
+--    end
+--    widget:set_markup(markup("#7493d2", volume_now.level .. "% "))
+--    widget:set_text(volume_now.level .. "% ")
+--  end
+--})
 
 -- {{{ Wibar
 -- Create a textclock widget
@@ -183,9 +200,9 @@ awful.screen.connect_for_each_screen(function(s)
     -- Each screen has its own tag table.
     awful.tag({ "eins", "zwei", "drei", "vier" }, s, {
       awful.layout.suit.floating,
-      lain.layout.centerwork.horizontal,
+      lain.layout.centerwork,
       --awful.layout.suit.tile.right,
-      lain.layout.termfair,
+      lain.layout.cascade.tile,
       lain.layout.termfair.center
       --awful.layout.suit.tile.left
     })
@@ -232,7 +249,8 @@ awful.screen.connect_for_each_screen(function(s)
             wibox.widget.systray(),
             --s.spacer,
             --volume,
-            --batwidget,
+            batstat,
+           s.spacer2,
             mytextclock,
             --s.mylayoutbox,
         },
@@ -278,21 +296,21 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey }, "c", function () os.execute("xsel | xsel -b") end),
 
     -- ALSA
-    awful.key({ }, "XF86AudioLowerVolume",
-    function ()
-      os.execute(string.format("amixer set %s 1%%-", volume.channel))
-      --volume.notify()
-    end),
+--    awful.key({ }, "XF86AudioLowerVolume",
+--    function ()
+--      os.execute(string.format("amixer set %s 1%%-", volume.channel))
+--      --volume.notify()
+--    end),
 
-    awful.key({ }, "XF86AudioRaiseVolume",
-    function ()
-      os.execute(string.format("amixer set %s 1%%+", volume.channel))
-    end),
+--    awful.key({ }, "XF86AudioRaiseVolume",
+--    function ()
+--      os.execute(string.format("amixer set %s 1%%+", volume.channel))
+--    end),
 
-    awful.key({ }, "XF86AudioMute",
-    function ()
-      os.execute(string.format("amixer set %s toggle", volume.togglechannel or volume.channel))
-    end),
+--    awful.key({ }, "XF86AudioMute",
+--    function ()
+--      os.execute(string.format("amixer set %s toggle", volume.togglechannel or volume.channel))
+--    end),
 
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
@@ -382,7 +400,7 @@ globalkeys = awful.util.table.join(
     --          {description = "run prompt", group = "launcher"}),
 
     awful.key({ modkey }, "r", function ()
-      awful.util.spawn(string.format("rofi -show run -bw 0 -font 'Terminus 12' -color-window '#17202A,#17202A,#17202A' -separator-style none -hide-scrollbar -color-normal '#17202A,#AFE8EB,#17202A,#AFE8EB,#17202A' -width 100 -padding 400 -opacity 95")) end),
+      awful.util.spawn(string.format("rofi -show run -bw 0 -font 'Terminus 12' -color-window '#17202A,#17202A,#17202A' -separator-style none -hide-scrollbar -color-normal '#17202A,#AFE8EB,#17202A,#AFE8EB,#17202A' -width 100 -padding 600 -opacity 95")) end),
 
     awful.key({ modkey }, "x",
               function ()
