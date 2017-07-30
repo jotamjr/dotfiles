@@ -80,8 +80,8 @@ TEXT
 #..: CPU USAGE :..
 #
 ${color d7d7d7}${offset 150}${voffset 23}${cpugraph cpu6 17,1}${voffset -3}${hr 2}${color3}
-${offset 200}${voffset -7}${font neuropol:size=20}${cpu cpu1}% ${font Nimbus Mono L:size=9 style=bold}C0
-${offset 200}${font neuropol:size=20}${cpu cpu2}% ${font Nimbus Mono L:size=9 style=bold}C1
+${offset 200}${voffset -7}${font inconsolata:size=18}${cpu cpu1}[%C1]
+${offset 200}${font inconsolata:size=18}${cpu cpu2}[%C2] ${font inconsolata:size=10}
 ${offset 200}${voffset -5}${cpubar cpu6 0, 110}${voffset 2}${color1}
 ${offset 200}T-C0  ${execi 20 sensors | grep "Core 0" | grep "high" | cut -d "+" -f2 | cut -c1-4 } °C
 ${offset 200}T-C1  ${execi 20 sensors | grep "Core 1" | grep "high" | cut -d "+" -f2 | cut -c1-4 } °C
@@ -90,10 +90,10 @@ ${offset 200}T-C1  ${execi 20 sensors | grep "Core 1" | grep "high" | cut -d "+"
 #
 #..: HARD DISK :..
 #
-${color d7d7d7}${offset 100}${voffset 600}${cpugraph cpu6 17,1}${voffset -3}${hr 2}${color3}
-${offset 170}${font neuropol:size=20}$memperc% ${font Nimbus Mono L:size=9 style=bold} Ram
-${offset 170}${voffset -5}${cpubar cpu6 0, 110}${voffset -2}${color1}
-${offset 170}root   ${fs_free /} / ${fs_size /}
-${offset 170}home   ${fs_free /home} / ${fs_size /home}
-${offset 170}boot   ${fs_free /boot} / ${fs_size /boot}
+${color d7d7d7}${offset 100}${voffset 1000}${cpugraph cpu6 17,1}${voffset -3}${hr 2}${color3}
+${offset 170}${font inconsolata:size=20}$memperc[%RAM] ${font inconsolata:size=10}
+${offset 170}${voffset -3}${cpubar cpu6 0, 126}${voffset -2}${color1}
+${offset 170}root ${fs_free /} / ${fs_size /}
+${offset 170}home ${fs_free /home} / ${fs_size /home}
+${offset 170}boot ${fs_free /boot} / ${fs_size /boot}
 ${voffset 100}
