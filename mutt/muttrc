@@ -56,3 +56,4 @@ alternative_order text/plain text/enriched text/html
 # smime cert conf
 #
 source ~/.mutt/smime
+source ~/.mutt/mutt-colors-solarized-dark-16.muttrc
