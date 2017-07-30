@@ -12,6 +12,7 @@
     {
         "link": {
             "~/.dotfiles": "",
+            "~/.config/awesome": "awesome",
             "~/.conky": "conky",
             "~/.radare2rc": "radare2rc",
             "~/.vim/vimrc": "vimrc",
