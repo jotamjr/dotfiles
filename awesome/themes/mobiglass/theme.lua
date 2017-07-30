@@ -5,13 +5,13 @@ theme.wallpaper   = os.getenv("HOME") .. "/.config/wallpapers/current.png"
 theme.font = "terminus 13"
 
 -- {{{ Colors
-theme.bg_normal  = "#202C3A"
-theme.bg_focus   = "#202C3A"
+theme.bg_normal  = "#002b36"
+theme.bg_focus   = "#586e75"
 theme.bg_urgent  = "#202C3A"
 theme.bg_systray = theme.bg_normal
-theme.fg_normal  = "#aabdcb"
-theme.fg_focus   = "#5dade2"
-theme.fg_urgent  = "af1d18"
+theme.fg_normal  = "#839496"
+theme.fg_focus   = "#93a1a1"
+theme.fg_urgent  = "#af1d18"
 -- }}}
 
 -- {{{ Borders
@@ -28,7 +28,7 @@ theme.border_marked = "#3ca4d8"
 --theme.separators_width = 10
 -- }}}
 
-return theme
+--return theme
 
 --
 -- Theme variables for future use
@@ -180,7 +180,7 @@ return theme
 -- theme.systray_icon_spacing = nil
 --
 -- taglist
--- theme.taglist_fg_focus = nil
+  theme.taglist_fg_focus = "#002b36"
 -- theme.taglist_bg_focus = nil
 -- theme.taglist_fg_urgent = nil
 -- theme.taglist_bg_urgent = nil
@@ -296,4 +296,4 @@ return theme
 -- theme.tooltip_shape = nil
 -- theme.tooltip_align = nil
 --
--- return theme
+return theme

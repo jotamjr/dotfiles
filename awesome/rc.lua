@@ -8,9 +8,10 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
-local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
+-- Lain widgets and utils
 local lain = require("lain")
+
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -103,20 +104,27 @@ local function client_menu_toggle_fn()
 end
 -- }}}
 
--- Menubar configuration
-menubar.utils.terminal = terminal -- Set the terminal for applications that require it
--- }}}
-
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
 
 local separators = lain.util.separators
+local arrl_dl = separators.arrow_left(beautiful.bg_focus, "alpha")
+local arrl_ld = separators.arrow_left("alpha", beautiful.bg_focus)
+
+local arrl1_e = separators.arrow_left(beautiful.fg_normal, beautiful.bg_focus)
+local arrl1_s = separators.arrow_left(beautiful.bg_focus, beautiful.fg_normal)
 
 markup = lain.util.markup
+local separators = lain.util.separators
 
 local batstat = lain.widget.bat{
   settings = function()
-    widget:set_markup("PL " .. bat_now.perc .. "%")
+    widget:set_markup(markup.font(beautiful.font, markup(beautiful.taglist_fg_focus," EPL " .. bat_now.perc .. "% ")))
+    if bat_now.perc > 85 then
+      naughty.notify({title = "Bat status", text = "Disconnect from power source"})
+    elseif bat_now.perc < 30 then
+      naughty.notify({title = "Bat status", text = "Connect to power source"})
+    end
   end
 }
 
@@ -133,7 +141,10 @@ local batstat = lain.widget.bat{
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+local mytextclock = wibox.widget.textclock()
+local wclock = wibox.container.background(mytextclock, beautiful.fg_normal)
+wclock.fg = beautiful.taglist_fg_focus
+
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = awful.util.table.join(
@@ -207,8 +218,6 @@ awful.screen.connect_for_each_screen(function(s)
       --awful.layout.suit.tile.left
     })
 
-    -- Create a promptbox for each screen
-    s.mypromptbox = awful.widget.prompt()
     -- Create an imagebox widget which will contains an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
     --s.mylayoutbox = awful.widget.layoutbox(s)
@@ -238,21 +247,16 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             mylauncher,
             s.mytaglist,
-            s.mypromptbox,
         },
         nil,
-        --s.spacer2,
-        --s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
             wibox.widget.systray(),
-            --s.spacer,
-            --volume,
-            batstat,
-           s.spacer2,
-            mytextclock,
-            --s.mylayoutbox,
+          arrl_ld,
+          wibox.container.background(batstat.widget, beautiful.bg_focus),
+          arrl1_s,
+          wclock
         },
     }
 end)
@@ -395,26 +399,8 @@ globalkeys = awful.util.table.join(
               end,
               {description = "restore minimized", group = "client"}),
 
-    -- Prompt
-    --awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
-    --          {description = "run prompt", group = "launcher"}),
-
     awful.key({ modkey }, "r", function ()
-      awful.util.spawn(string.format("rofi -show run -bw 0 -font 'Terminus 12' -color-window '#17202A,#17202A,#17202A' -separator-style none -hide-scrollbar -color-normal '#17202A,#AFE8EB,#17202A,#AFE8EB,#17202A' -width 100 -padding 600 -opacity 95")) end),
-
-    awful.key({ modkey }, "x",
-              function ()
-                  awful.prompt.run {
-                    prompt       = "Run Lua code: ",
-                    textbox      = awful.screen.focused().mypromptbox.widget,
-                    exe_callback = awful.util.eval,
-                    history_path = awful.util.get_cache_dir() .. "/history_eval"
-                  }
-              end,
-              {description = "lua execute prompt", group = "awesome"}),
-    -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
+      awful.util.spawn(string.format("rofi -show run -bw 0 -font 'Terminus 12' -color-window '#17202A,#17202A,#17202A' -separator-style none -hide-scrollbar -color-normal '#17202A,#AFE8EB,#17202A,#AFE8EB,#17202A' -width 100 -padding 600 -opacity 95")) end)
 )
 
 clientkeys = awful.util.table.join(
