@@ -1,32 +1,64 @@
+#define S_base03        #002b36
+#define S_base02        #073642
+#define S_base01        #586e75
+#define S_base00        #657b83
+#define S_base0         #839496
+#define S_base1         #93a1a1
+#define S_base2         #eee8d5
+#define S_base3         #fdf6e3
+
+*background:            S_base03
+*foreground:            S_base0
+*fadeColor:             S_base03
+*cursorColor:           S_base1
+*pointerColorBackground:S_base01
+*pointerColorForeground:S_base1
+
+#define S_yellow        #b58900
+#define S_orange        #cb4b16
+#define S_red           #dc322f
+#define S_magenta       #d33682
+#define S_violet        #6c71c4
+#define S_blue          #268bd2
+#define S_cyan          #2aa198
+#define S_green         #859900
+
+!! black dark/light
+*color0:                S_base02
+*color8:                S_base03
+
+!! red dark/light
+*color1:                S_red
+*color9:                S_orange
+
+!! green dark/light
+*color2:                S_green
+*color10:               S_base01
+
+!! yellow dark/light
+*color3:                S_yellow
+*color11:               S_base00
+
+!! blue dark/light
+*color4:                S_blue
+*color12:               S_base0
+
+!! magenta dark/light
+*color5:                S_magenta
+*color13:               S_violet
+
+!! cyan dark/light
+*color6:                S_cyan
+*color14:               S_base1
+
+!! white dark/light
+*color7:                S_base2
+*color15:               S_base3
+
 urxvt.termName: rxvt-unicode
 urxvt.scrollBar: false
 urxvt.saveLines: 4096
 urxvt.depth: 32
-urxvt.font: xft:inconsolata:size=10,xft:Inconsolata for Powerline:size=10
+urxvt.font: xft:inconsolata:size=12,xft:Inconsolata for Powerline:size=12
 urxvt.transparent: false
-urxvt.foreground: #AABDCB
-urxvt.background: [90]#202C3A
-
-urxvt.color0  : #2E3436
-urxvt.color8  : #555753
-! red
-urxvt.color1  : #922B21
-urxvt.color9  : #EC7063
-! green
-urxvt.color2  : #1E8449
-urxvt.color10 : #58D68D
-! yellow
-urxvt.color3  : #B7950B
-urxvt.color11 : #F4D03F
-! blue
-urxvt.color4  : #1F618D
-urxvt.color12 : #5DADE2
-! magenta
-urxvt.color5  : #76448A
-urxvt.color13 : #A569BD
-! cyan
-urxvt.color6  : #148F77
-urxvt.color14 : #48C6B0
-! white
-urxvt.color7  : #D3D7CF
-urxvt.color15 : #EEEEEC
+urxvt.background: [95]S_base03
