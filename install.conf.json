@@ -18,7 +18,9 @@
             "~/.radare2rc": "radare2rc",
             "~/.vim/vimrc": "vimrc",
             "~/.xinitrc": "xinitrc",
-            "~/.Xresources": "Xresources"
+            "~/.Xresources": "Xresources",
+            "~/.gbp.conf": "debian-dev/gbp.conf",
+            "~/.sbuildrc": "debian-dev/sbuildrc"
         }
     },
     {
