@@ -53,6 +53,7 @@ run_once("unclutter -root")
 run_once("xautolock -secure -time 4 -locker slock")
 run_once("compton --config ~/hypercube/personal/dotfiles/compton.conf")
 run_once("conky -d -c ~/.conky/conkyrc")
+run_once("fcitx-autostart")
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
@@ -211,8 +212,9 @@ awful.screen.connect_for_each_screen(function(s)
     -- Each screen has its own tag table.
     awful.tag({ "eins", "zwei", "drei", "vier" }, s, {
       awful.layout.suit.floating,
-      lain.layout.centerwork,
+      --lain.layout.centerwork,
       --awful.layout.suit.tile.right,
+      lain.layout.cascade.tile,
       lain.layout.cascade.tile,
       lain.layout.termfair.center
       --awful.layout.suit.tile.left
