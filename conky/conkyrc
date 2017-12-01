@@ -47,7 +47,7 @@
   uppercase no                        #Only capital letters
   use_spacer right                    #Adds spaces around certain objects to stop them from moving other things around
   #
-  xftfont saxMono:size=9              #Default font
+  xftfont inconsolata:size=9              #Default font
   #
   default_bar_size 82 3               #Specify a default width and height for bars
   stippled_borders 3                  #Border dashing
@@ -79,9 +79,9 @@ TEXT
 #
 #..: CPU USAGE :..
 #
-${color d7d7d7}${offset 150}${voffset 23}${cpugraph cpu6 17,1}${voffset -3}${hr 2}${color3}
-${offset 200}${voffset -7}${font inconsolata:size=18}${cpu cpu1}[%C1]
-${offset 200}${font inconsolata:size=18}${cpu cpu2}[%C2] ${font inconsolata:size=10}
+${color d7d7d7}${offset 150}${voffset 18}${cpugraph cpu6 17,1}${voffset -12}${hr 2}${color3}
+${offset 245}${voffset 0}${font inconsolata:size=8}${cpu cpu1}[%C1]
+${offset 245}${font inconsolata:size=8}${cpu cpu2}[%C2] ${font inconsolata:size=5}
 ${offset 200}${voffset -5}${cpubar cpu6 0, 110}${voffset 2}${color1}
 ${offset 200}T-C0  ${execi 20 sensors | grep "Core 0" | grep "high" | cut -d "+" -f2 | cut -c1-4 } °C
 ${offset 200}T-C1  ${execi 20 sensors | grep "Core 1" | grep "high" | cut -d "+" -f2 | cut -c1-4 } °C
@@ -90,9 +90,9 @@ ${offset 200}T-C1  ${execi 20 sensors | grep "Core 1" | grep "high" | cut -d "+"
 #
 #..: HARD DISK :..
 #
-${color d7d7d7}${offset 100}${voffset 1000}${cpugraph cpu6 17,1}${voffset -3}${hr 2}${color3}
-${offset 170}${font inconsolata:size=20}$memperc[%RAM] ${font inconsolata:size=10}
-${offset 170}${voffset -3}${cpubar cpu6 0, 126}${voffset -2}${color1}
+${color d7d7d7}${offset 100}${voffset 1028}${cpugraph cpu6 17,1}${voffset -3}${hr 2}${color3}
+${offset 220}${font inconsolata:size=8}$memperc[%RAM] ${font inconsolata:size=5}
+${offset 170}${voffset -5}${cpubar cpu6 0, 126}${voffset -2}${color1}
 ${offset 170}root ${fs_free /} / ${fs_size /}
 ${offset 170}home ${fs_free /home} / ${fs_size /home}
 ${offset 170}boot ${fs_free /boot} / ${fs_size /boot}
