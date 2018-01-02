@@ -217,7 +217,7 @@ awful.screen.connect_for_each_screen(function(s)
       lain.layout.cascade.tile,
       lain.layout.cascade.tile,
       lain.layout.termfair.center,
-      awful.layout.suit.floating
+      awful.layout.suit.floating,
       awful.layout.suit.max.fullscreen
       --awful.layout.suit.tile.left
     })
