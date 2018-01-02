@@ -210,7 +210,7 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "eins", "zwei", "drei", "vier", "fünf" }, s, {
+    awful.tag({ "eins", "zwei", "drei", "vier", "fünf", "sechs" }, s, {
       awful.layout.suit.floating,
       --lain.layout.centerwork,
       --awful.layout.suit.tile.right,
@@ -218,6 +218,7 @@ awful.screen.connect_for_each_screen(function(s)
       lain.layout.cascade.tile,
       lain.layout.termfair.center,
       awful.layout.suit.floating
+      awful.layout.suit.max.fullscreen
       --awful.layout.suit.tile.left
     })
 
