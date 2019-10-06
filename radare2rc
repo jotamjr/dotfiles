@@ -1,6 +1,6 @@
 e dbg.bep=main
 e scr.color=true
-e asm.cmtright=true
+e asm.cmt.right=true
 e asm.pseudo = false
 e cmd.stack = true
 eco solarized
