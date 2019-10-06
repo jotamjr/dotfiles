@@ -17,6 +17,7 @@
             "~/.gdbinit": "gdbinit",
             "~/.radare2rc": "radare2rc",
             "~/.vim/vimrc": "vimrc",
+            "~/.tmux.conf": "tmux",
             "~/.xinitrc": "xinitrc",
             "~/.Xresources": "Xresources",
             "~/.gbp.conf": "debian-dev/gbp.conf",
