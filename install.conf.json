@@ -16,7 +16,7 @@
             "~/.conky": "conky",
             "~/.gdbinit": "gdbinit",
             "~/.radare2rc": "radare2rc",
-            "~/.vim/vimrc": "vimrc",
+            "~/.vim": "vim",
             "~/.tmux.conf": "tmux",
             "~/.xinitrc": "xinitrc",
             "~/.Xresources": "Xresources",
